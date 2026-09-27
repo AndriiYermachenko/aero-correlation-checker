@@ -68,4 +68,6 @@ The fake data has four faults planted in it. They are the four kinds of thing th
 - Counting runs against the aerodynamic testing limit. Teams are only allowed a fixed number of tunnel runs and CFD simulations, so every run that has to be thrown away is a wasted one.
 - Reading real telemetry instead of a CSV file.
 
+Built with AI coding assistance; I designed the tool, reviewed every file and can explain how each part works.
+
 All data is synthetic; this is a learning project.
