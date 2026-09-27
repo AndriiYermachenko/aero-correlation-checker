@@ -6,7 +6,7 @@ import analyse
 import make_data
 
 
-def test_full_run_writes_the_outputs_and_finds_the_planted_faults(tmp_path: Path):
+def test_full_run_finds_the_planted_faults(tmp_path: Path) -> None:
     """Proves every step works together, from the CSV files to the written summary."""
     data_dir = tmp_path / "data"
     out_dir = tmp_path / "output"

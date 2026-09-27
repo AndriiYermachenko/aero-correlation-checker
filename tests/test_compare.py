@@ -22,7 +22,7 @@ REFERENCE = averages([20, 30, 40], cl_mean=[3.30, 3.00, 2.78], cd_mean=[1.00, 0.
 OTHER = averages([30, 20], cl_mean=[2.94, 3.63], cd_mean=[0.76, 1.06])
 
 
-def test_differences_are_signed_percentages_of_the_reference():
+def test_differences_are_signed_percentages_of_the_reference() -> None:
     """Proves diff = (other - reference) / reference * 100, keeping the sign."""
     result = compare.compare(REFERENCE, OTHER, "cfd")
     at_20 = result.iloc[0]
@@ -33,7 +33,7 @@ def test_differences_are_signed_percentages_of_the_reference():
     assert at_30["cd_diff_pct"] == pytest.approx(-5.0, abs=0.01)   # 0.76 against 0.80
 
 
-def test_height_missing_from_one_side_is_kept_without_data():
+def test_height_missing_from_one_side_is_kept_without_data() -> None:
     """Proves a height only the reference has still gets a row, marked as no data."""
     result = compare.compare(REFERENCE, OTHER, "cfd")
     assert list(result["ride_height_mm"]) == [20, 30, 40]

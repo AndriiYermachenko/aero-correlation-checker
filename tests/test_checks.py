@@ -28,25 +28,25 @@ def flagged(issues: list[checks.Issue]) -> list[tuple[int, str]]:
     return [(issue.run_id, issue.kind) for issue in issues]
 
 
-def test_nan_downforce_is_reported_as_missing():
+def test_nan_downforce_is_reported_as_missing() -> None:
     """Proves an empty downforce value is caught and blamed on the right run."""
     runs = make_runs([GOOD_DOWNFORCE, np.nan], [GOOD_DRAG, GOOD_DRAG])
     assert flagged(checks.find_issues(runs, "tunnel")) == [(2, "missing")]
 
 
-def test_negative_drag_is_reported_as_out_of_range():
+def test_negative_drag_is_reported_as_out_of_range() -> None:
     """Proves an impossible value is caught: drag always pushes backwards, never forwards."""
     runs = make_runs([GOOD_DOWNFORCE, GOOD_DOWNFORCE], [GOOD_DRAG, -GOOD_DRAG])
     assert flagged(checks.find_issues(runs, "tunnel")) == [(2, "out_of_range")]
 
 
-def test_run_with_cl_25_percent_high_is_not_repeatable():
+def test_run_with_cl_25_percent_high_is_not_repeatable() -> None:
     """Proves that out of three repeats, only the one that disagrees is flagged."""
     runs = make_runs([GOOD_DOWNFORCE, GOOD_DOWNFORCE * 1.25, GOOD_DOWNFORCE], [GOOD_DRAG] * 3)
     assert flagged(checks.find_issues(runs, "tunnel")) == [(2, "not_repeatable")]
 
 
-def test_bad_row_does_not_distort_the_median():
+def test_bad_row_does_not_distort_the_median() -> None:
     """Proves a row that is already flagged is left out of the repeatability check.
 
     Runs 1 and 2 are 3.3% apart, so each is under 2% from their shared median.
@@ -56,7 +56,7 @@ def test_bad_row_does_not_distort_the_median():
     assert flagged(checks.find_issues(runs, "tunnel")) == [(3, "out_of_range")]
 
 
-def test_drop_flagged_removes_exactly_the_flagged_rows():
+def test_drop_flagged_removes_exactly_the_flagged_rows() -> None:
     """Proves flagged runs are removed and every other run is kept."""
     runs = make_runs([GOOD_DOWNFORCE] * 4, [GOOD_DRAG] * 4)
     issues = [
