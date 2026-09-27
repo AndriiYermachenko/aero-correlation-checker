@@ -22,7 +22,7 @@ It is a weekend demo project. The author, a second-year Computer Science student
 The project folder already contains `.venv/`, `.git/`, `.gitignore` and `requirements.txt`. Create the rest:
 
 ```
-tunnel-analyser/
+aero-correlation-checker/
   README.md
   make_data.py              # writes the three fake data files
   analyse.py                # the command-line entry point
