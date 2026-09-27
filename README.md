@@ -46,9 +46,11 @@ One row means:
 - `coefficients.png`: the downforce coefficient of each source against ride height.
 - `differences.png`: how far CFD and the track sit from the tunnel, in percent.
 
-![Downforce coefficient vs ride height](output/coefficients.png)
+The two charts are shown below. These are copies kept in `docs/`, because `output/` is not committed to git.
 
-![CL and CD difference vs tunnel](output/differences.png)
+![Downforce coefficient vs ride height](docs/coefficients.png)
+
+![CL and CD difference vs tunnel](docs/differences.png)
 
 ## The four planted faults
 
